@@ -57,6 +57,8 @@ struct DrawDispatchVuid {
     const char* image_subresources;
     const char* descriptor_valid;
     const char* sampler_imageview_type;
+    const char* sampler_implicitLod;
+    const char* sampler_bias_offset;
 };
 
 typedef struct {
