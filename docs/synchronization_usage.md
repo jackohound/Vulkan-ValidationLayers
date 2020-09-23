@@ -136,17 +136,20 @@ info.pNext = &features;
 
 ### Running Synchronization Validation
 
-The simplest way to run synchronization validation and debug issues is to:
+To run synchronization validation and debug issues (all platforms):
 
-*   Enable Synchronization Validation using [Vulkan Configurator (vkconfig)](https://vulkan.lunarg.com/doc/sdk/latest/windows/vkconfig.html).
-*   On Linux:
-    *   Create a debug callback with `vkCreateDebugUtilsMessengerEXT` with the `VK_DEBUG_REPORT_ERROR_BIT_EXT` set.
-    *   Set a breakpoint in the debug callback and run your application in the debugger.
-    *   The callback will be called when a `vkCmd`... command with a hazard is recorded.
-*   On Windows:
+- Create a debug callback with `vkCreateDebugUtilsMessengerEXT` with the `VK_DEBUG_REPORT_ERROR_BIT_EXT` set.
+- Enable synchronization as noted above. On Linux and Windows this can be simplified by enabling Synchronization Validation using [Vulkan Configurator (vkconfig)](https://vulkan.lunarg.com/doc/sdk/latest/windows/vkconfig.html)
+- Set a breakpoint in the debug callback and run your application in the debugger.
+- The callback will be called when a `vkCmd`... command with a hazard is recorded.
+
+On Windows, Synchronization Validation can be run using just vkconfig and the debugger without defining a callback:
+
+*   In vkconfig
+    *   Enable Synchronization Valdation
     *   Select 'Debug Actions' 'Break' and 'Debug Output'
-    *   Debug application in Visual Studio
-    *   Hazard messages will appear in the debugger output window and the debugger will break (in the validation layer code)  when a `vkCmd`... command with a hazard is recorded.
+*   Debug application in Visual Studio
+*   Hazard messages will appear in the debugger output window and the debugger will break (in the validation layer code)  when a `vkCmd`... command with a hazard is recorded.
 
 
 ### Synchronization Validation Messages
